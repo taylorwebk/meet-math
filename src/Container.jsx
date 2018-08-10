@@ -1,27 +1,33 @@
 import React, { Fragment, Component } from 'react'
 
 import MainAppBar from './appBar/MainAppBar'
+import SideBar from './menu/SideBar'
+import Main from './body/Main'
 
 class Container extends Component {
   constructor() {
     super()
     this.state = {
-      menu: false
+      showMenu: false
     }
   }
 
-  handleMenu = () => {
-    this.setState(prevState => ({
-      menu: !prevState.menu
-    }))
+  handleMenu = state => () => {
+    this.setState({
+      showMenu: state
+    })
   }
 
   render() {
-    const { menu } = this.state
+    const { showMenu } = this.state
     return (
       <Fragment>
-        <MainAppBar />
-        { menu ? 'hola' : 'HOLA' }
+        <MainAppBar handleMenu={this.handleMenu} />
+        <SideBar
+          handleMenu={this.handleMenu}
+          showMenu={showMenu}
+        />
+        <Main />
       </Fragment>
     )
   }

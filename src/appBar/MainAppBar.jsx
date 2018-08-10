@@ -19,12 +19,12 @@ const styles = {
 }
 
 const MainAppBar = (props) => {
-  const { classes } = props
+  const { classes, handleMenu } = props
   return (
     <div className={classes.root}>
       <AppBar position="static" color="default">
         <Toolbar>
-          <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
+          <IconButton onClick={handleMenu(true)} className={classes.menuButton} color="inherit" aria-label="Menu">
             <MenuIcon />
           </IconButton>
           <Typography variant="title" color="inherit">
